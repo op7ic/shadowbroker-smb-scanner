@@ -4,7 +4,7 @@ Use shadowbroker tools to scan for vulnerable smb services. Comes with x86 and x
 
 ### How to compile it:
 
-No need - just grab binaries. 
+No need - just grab binaries and python wrapper around these. 
 
 ### How to use it:
 
