@@ -2,6 +2,10 @@
 
 Use shadowbroker tools to scan for vulnerable smb services. Comes with x86 libraries. Target List option should be list of IPs separated by newline.  
 
+### !!!!!!! DANGER !!!!!!!
+
+This is based on shadowborker dump. Who knows what hides in these binaries.
+
 ### Help
 
 ```
