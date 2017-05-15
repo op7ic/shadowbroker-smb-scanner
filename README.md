@@ -24,11 +24,11 @@ Options:
 ```
 ### Does it exploit anything? 
 
-Nope. This is just a scanner. 
+Nope. This is just a scanner. Use it to find vulnerable boxes and patch them. 
 
 ### How to compile it:
 
-No need - just grab binaries and python wrapper around these. 
+No need - just grab binaries and python wrapper around these. Binaries come from https://github.com/misterch0c/shadowbroker/tree/master/windows/lib/x86-Windows
 
 ### How to use it:
 
