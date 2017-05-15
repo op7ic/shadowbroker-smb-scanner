@@ -22,7 +22,9 @@ Options:
                         Output Directory
   --verbose=VERBOSE     Verbose debug mode
 ```
+### Does it exploit anything? 
 
+Nope. This is just a scanner. 
 
 ### How to compile it:
 
