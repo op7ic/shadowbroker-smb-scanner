@@ -26,7 +26,16 @@ Options:
 ```
 ### Does it exploit anything? 
 
-Nope. This is just a scanner. Use it to find vulnerable boxes and patch them. 
+Nope. This is just a scanner. Use it to find vulnerable boxes and patch them. It scans for following bugs: 
+
+**ETERNALSYNERGY**
+
+**ETERNALBLUE**
+
+**ETERNALROMANCE**
+
+**ETHERNALCHAMPION**
+
 
 ### How to compile it:
 
