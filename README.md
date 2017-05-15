@@ -1,6 +1,24 @@
 # shadowbroker-smb-scanner
 
-Use shadowbroker tools to scan for vulnerable smb services. Comes with x86 and x64 libraries.
+Use shadowbroker tools to scan for vulnerable smb services. Comes with x86 libraries.
+
+### Help
+
+```
+-=[ SMBTouch scanner (x86) v0.3a ]=-
+                by op7ic
+
+Usage: shadowbroker-smb-scanner.py [options]
+
+Options:
+  -h, --help            show this help message and exit
+  -l TARGET_LIST, --list=TARGET_LIST
+                        List of Target IPs
+  -d OUTPUT_DIR, --dir=OUTPUT_DIR
+                        Output Directory
+  --verbose=VERBOSE     Verbose debug mode
+```
+
 
 ### How to compile it:
 
@@ -16,7 +34,7 @@ See below some usage examples.
 
 ![Alt text](screenshots/Non-Verbose-Output.png?raw=true "Non-Verbose Output from the scanner")
 
-### MD5s - X86 binaries
+### MD5s 
 
 | MD5 | FileName | Source |
 |----------------|--------|--------|
@@ -32,9 +50,6 @@ See below some usage examples.
 |3e89c56056e5525bf4d9e52b28fbbca7|trfo-2.dll|https://github.com/misterch0c/shadowbroker/tree/master/windows/lib/x86-Windows|
 |83076104ae977d850d1e015704e5730a|tucl-1.dll|https://github.com/misterch0c/shadowbroker/tree/master/windows/lib/x86-Windows|
 |6b7276e4aa7a1e50735d2f6923b40de4|ucl.dll|https://github.com/misterch0c/shadowbroker/tree/master/windows/lib/x86-Windows|
-
-### MD5s - X64
-
 
 ### Issues:
 
