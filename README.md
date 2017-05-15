@@ -43,7 +43,7 @@ No need - just grab binaries and python wrapper around these. Binaries come from
 
 ### How to use it:
 
-See below some usage examples. You need to use on Windows machine. Not tested this with Wine yet.
+See below some usage examples. You need to use on Windows machine. Wine seems to work too (see below)
 
 ### Run this on Wine (Linux)
 
