@@ -4,7 +4,7 @@ Use shadowbroker tools to scan for vulnerable smb services. Comes with x86 libra
 
 ### !!!!!!! DANGER !!!!!!!
 
-This is based on shadowborker dump. Who knows what hides in these binaries.
+This is based on shadowborker dump. Who knows what hides in these binaries, use at your own risk
 
 ### Help
 
