@@ -1,6 +1,6 @@
 # shadowbroker-smb-scanner
 
-Use shadowbroker tools to scan for vulnerable smb services. Comes with x86 libraries. Target List option should be list of IPs separated by newline. This is based on SMBTOUCH from the dump.
+Use shadowbroker tools to scan for vulnerable smb services so these machines can be identified and patched. Comes with x86 libraries. Target List option should be list of IPs separated by newline. This is based on SMBTOUCH from the dump.
 
 ### !!!!!!! DANGER !!!!!!!
 
