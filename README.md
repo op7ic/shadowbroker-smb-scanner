@@ -45,6 +45,12 @@ No need - just grab binaries and python wrapper around these. Binaries come from
 
 See below some usage examples. You need to use on Windows machine. Not tested this with Wine yet.
 
+### Run this on Wine (Linux)
+
+```
+wine python shadowbroker-smb-scanner.py -l target.txt -d /tmp/ --verbose=False
+```
+
 **Help**
 
 ![Alt text](screenshots/help.png?raw=true "Help")
