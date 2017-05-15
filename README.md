@@ -6,7 +6,7 @@ Use shadowbroker SMBTOUCH tools to scan for vulnerable smb services so these mac
 
 ### !!!!!!! DANGER !!!!!!!
 
-This is based on shadowborker dump. Who knows what hides in these binaries, use at your own risk
+This is based on shadowborker dump. Who knows what hides in these binaries, use at your own risk and from VM ideally. 
 
 ### Help
 
@@ -39,16 +39,22 @@ Nope. This is just a scanner. Use it to find vulnerable boxes and patch them. It
 
 ### How to compile it:
 
-No need - just grab binaries and python wrapper around these. Binaries come from https://github.com/misterch0c/shadowbroker/tree/master/windows/lib/x86-Windows
+No need - just grab binaries and python wrapper around these. Binaries came from https://github.com/misterch0c/shadowbroker/tree/master/windows/lib/x86-Windows
 
 ### How to use it:
 
-See below some usage examples. You need to use on Windows machine. Wine seems to work too (see below)
+See screenshots below for use examples. You need to use on Windows machine. Wine seems to work too (see below)
 
 ### Run this on Wine (Linux)
 
 ```
 wine python shadowbroker-smb-scanner.py -l target.txt -d /tmp/ --verbose=False
+```
+
+### Run this on Windows
+
+```
+python shadowbroker-smb-scanner.py -l target.txt -d output/ --verbose=False
 ```
 
 **Help**
