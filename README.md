@@ -1,6 +1,6 @@
 # shadowbroker-smb-scanner
 
-Use shadowbroker tools to scan for vulnerable smb services. Comes with x86 libraries.
+Use shadowbroker tools to scan for vulnerable smb services. Comes with x86 libraries. Target List option should be list of IPs separated by newline.  
 
 ### Help
 
@@ -28,9 +28,15 @@ No need - just grab binaries and python wrapper around these.
 
 See below some usage examples.
 
+**Help**
+
 ![Alt text](screenshots/help.png?raw=true "Help")
 
+**Verbose output**
+
 ![Alt text](screenshots/Verbose-Output.png?raw=true "Verbose Output from the scanner")
+
+**Non-Verbose output**
 
 ![Alt text](screenshots/Non-Verbose-Output.png?raw=true "Non-Verbose Output from the scanner")
 
