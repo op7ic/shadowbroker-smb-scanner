@@ -8,10 +8,22 @@ Use shadowbroker SMBTOUCH tools to scan for vulnerable smb services so these mac
 
 This is based on shadowborker dump. Who knows what hides in these binaries, use at your own risk and from VM ideally. 
 
+### Version History
+
+** v0.4a **
+* Added some error handling
+* Added authomatic wine handler if Linux detected
+* Added directory handling code depending on OS version
+* Changed verbose option
+* Added CTRL-C handler
+
+** v0.3a **
+* Tested in Wine on Linux
+
 ### Help
 
 ```
--=[ SMBTouch scanner (x86) v0.3a ]=-
+-=[ SMBTouch scanner (x86) v0.4a ]=-
                 by op7ic
 
 Usage: shadowbroker-smb-scanner.py [options]
@@ -22,7 +34,7 @@ Options:
                         List of Target IPs
   -d OUTPUT_DIR, --dir=OUTPUT_DIR
                         Output Directory
-  --verbose=VERBOSE     Verbose debug mode
+  -v, --verbose         Verbose debug mode
 ```
 ### Does it exploit anything? 
 
@@ -48,13 +60,13 @@ See screenshots below for use examples. You need to use on Windows machine. Wine
 ### Run this on Wine (Linux)
 
 ```
-wine python shadowbroker-smb-scanner.py -l target.txt -d /tmp/ --verbose=False
+wine python shadowbroker-smb-scanner.py -l target.txt -d /tmp/ -v
 ```
 
 ### Run this on Windows
 
 ```
-python shadowbroker-smb-scanner.py -l target.txt -d output/ --verbose=False
+python shadowbroker-smb-scanner.py -l target.txt -d output/ -v
 ```
 
 **Help**
