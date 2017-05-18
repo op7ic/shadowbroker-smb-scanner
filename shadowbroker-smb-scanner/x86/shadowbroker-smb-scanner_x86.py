@@ -13,7 +13,7 @@ import os
 import hashlib
 import datetime
 import subprocess
-
+import re
 #############################################################################
 # Version & Info                                                            #
 #############################################################################
@@ -34,6 +34,11 @@ class bgcolors:
 #############################################################################
 # Functions                                                                 #
 #############################################################################
+
+#Detect if IP is correct (ipv4 for now only)
+def is_valid_ip(ip):
+    m = re.match(r"^(\d{1,3})\.(\d{1,3})\.(\d{1,3})\.(\d{1,3})$", ip)
+    return bool(m) and all(map(lambda n: 0 <= int(n) <= 255, m.groups()))
 
 #Detect Wine installation
 def DetectWine():
@@ -83,6 +88,44 @@ def ReadOutput(file, ip):
         # SMBTouch failed - not vulnerable or can't access. 
         print "[-] SMBTouch check failed on IP: %s" % (ip)
 
+# Target single device
+def ScanAndReplaceSingle(targetlist,verbose,output_folder):
+    try:
+        _xml_orig_host = '      <value>192.168.1.1</value>'
+        if verbose:
+            print "[+] %s is on the target list" % (targetlist)
+        xml_new_host='      <value>%s</value>' % (targetlist)
+        for line in fileinput.input('Smbtouch-1.1.1.xml',inplace=True):
+            print line.rstrip().replace(_xml_orig_host,xml_new_host)
+        if "win" in sys.platform.lower():
+            out_file = "%s\%s.txt" % (output_folder,targetlist)
+            prep_cmd = r"Smbtouch-1.1.1.exe > %s" % (out_file)
+        else:
+            out_file = "%s/%s.txt" % (output_folder,targetlist)
+            if DetectWine():
+                prep_cmd = r"wine Smbtouch-1.1.1.exe > %s" % (out_file)
+            else:
+                if verbose:
+                    "[-] Wine not detected. Will try to invoke anyway."
+                prep_cmd = r"Smbtouch-1.1.1.exe > %s" % (out_file)
+        f_exec = os.popen(prep_cmd)
+        time.sleep(3)
+        ReadOutput(out_file,targetlist)
+        if verbose:
+            print "[+] Sleeping 3 sec to let it execute" 
+        if verbose:
+            print "[+] Restoring original config for IP %s " % (targetlist)
+        for line in fileinput.input('Smbtouch-1.1.1.xml',inplace=True):
+            print line.rstrip().replace(xml_new_host,_xml_orig_host)
+    except KeyboardInterrupt:
+        print "[+] Signal caught. Cleaning up"
+        RestoreConfigOnError(xml_new_host)
+        print "[+] Exit"
+        sys.exit(255)
+    except IOError,io:
+        print "[+] IO Exception caught: %s " % (io)
+        RestoreConfigOnError(xml_new_host)
+        sys.exit(255)
 
 def ScanAndReplace(targetlist,verbose,output_folder):
     if verbose:
@@ -142,6 +185,7 @@ class Options:
         parser.add_option('-l','--list' ,action="store", dest="target_list", help="List of Target IPs separated by newline")
         parser.add_option('-d','--dir',action="store", dest="output_dir",default=".",help="Output Directory")
         parser.add_option('-v','--verbose', help="Verbose debug mode",action="store_true", dest="verbose",default=False)
+        parser.add_option('-t','--target', help="Single target IP to scan",action="store", dest="single_target")
         (o, a) = parser.parse_args()
         return o,a
 
@@ -157,8 +201,17 @@ def main():
     (o,a) = Options().get_args()
     if o.verbose:
         print "[+] Starting at %s " % (datetime.datetime.now())
+    if len(a) == 0:
+        print "No argument passed. Type -h for help"
     try:
-        ScanAndReplace(o.target_list,o.verbose,o.output_dir)
+        if o.target_list != None:
+            ScanAndReplace(o.target_list,o.verbose,o.output_dir)
+        elif o.target_list == None and o.single_target != None:
+            if is_valid_ip(o.single_target):
+                ScanAndReplaceSingle(o.single_target,o.verbose,o.output_dir)
+            else:
+                print "[-] IP is invalid"
+                sys.exit(255)
     except TypeError:
         print "No argument passed. Type -h for help"
 if __name__=="__main__":

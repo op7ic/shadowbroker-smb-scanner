@@ -12,6 +12,7 @@ This is based on shadowborker dump. Who knows what hides in these binaries, use 
 
 ** v0.5a **
 * Added Wine detection using which command
+* Added single IP target
 
 ** v0.4a **
 * Added some error handling
@@ -34,10 +35,12 @@ Usage: shadowbroker-smb-scanner.py [options]
 Options:
   -h, --help            show this help message and exit
   -l TARGET_LIST, --list=TARGET_LIST
-                        List of Target IPs
+                        List of Target IPs separated by newline
   -d OUTPUT_DIR, --dir=OUTPUT_DIR
                         Output Directory
   -v, --verbose         Verbose debug mode
+  -t SINGLE_TARGET, --target=SINGLE_TARGET
+                        Single target IP to scan
 ```
 ### Does it exploit anything? 
 
