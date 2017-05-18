@@ -12,6 +12,7 @@ import fileinput
 import os
 import hashlib
 import datetime
+import subprocess
 
 #############################################################################
 # Version & Info                                                            #
@@ -33,6 +34,10 @@ class bgcolors:
 #############################################################################
 # Functions                                                                 #
 #############################################################################
+
+#Detect Wine installation
+def DetectWine():
+    return subprocess.call("type wine" , shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE) == 0
 
 #On signal restore config
 def RestoreConfigOnError(xml_new_host):
@@ -100,7 +105,12 @@ def ScanAndReplace(targetlist,verbose,output_folder):
                 prep_cmd = r"Smbtouch-1.1.1.exe > %s" % (out_file)
             else:
                 out_file = "%s/%s.txt" % (output_folder,elems)
-                prep_cmd = r"wine Smbtouch-1.1.1.exe > %s" % (out_file)
+                if DetectWine():
+                    prep_cmd = r"wine Smbtouch-1.1.1.exe > %s" % (out_file)
+                else:
+                    if verbose:
+                        "[-] Wine not detected. Will try to invoke anyway."
+                    prep_cmd = r"Smbtouch-1.1.1.exe > %s" % (out_file)
             f_exec = os.popen(prep_cmd)
             time.sleep(3)
             ReadOutput(out_file,elems)

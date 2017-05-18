@@ -10,6 +10,9 @@ This is based on shadowborker dump. Who knows what hides in these binaries, use 
 
 ### Version History
 
+** v0.5a **
+* Added Wine detection using which command
+
 ** v0.4a **
 * Added some error handling
 * Added authomatic wine handler if Linux detected
@@ -23,7 +26,7 @@ This is based on shadowborker dump. Who knows what hides in these binaries, use 
 ### Help
 
 ```
--=[ SMBTouch scanner (x86) v0.4a ]=-
+-=[ SMBTouch scanner (x86) v0.5a ]=-
                 by op7ic
 
 Usage: shadowbroker-smb-scanner.py [options]
@@ -62,6 +65,7 @@ See screenshots below for use examples. You need to use on Windows machine. Wine
 ```
 wine python shadowbroker-smb-scanner.py -l target.txt -d /tmp/ -v
 ```
+or use auto wine handling built into verion 0.4a and above
 
 ### Run this on Windows
 
